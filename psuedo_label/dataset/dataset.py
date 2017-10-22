@@ -15,7 +15,7 @@ class data_loader(Dataset):
         self.path = path
         self.files = glob.glob(os.path.join(path ,"*.jpg"))
         self.transform = transform
-        self.label = torch.cuda.LongTensor(label)
+        # self.label = torch.cuda.LongTensor(label)
         
     def __len__(self):
         return len(self.files)
@@ -28,8 +28,9 @@ class data_loader(Dataset):
         img = np.expand_dims(img, axis =0)
         img = torch.from_numpy(img)
 #         img = torch.FloatTensor(img)
-        d = {'image'  : img, 'name' : img_name, 'label' : self.label }
-        return d
+        # d = {'image'  : img, 'name' : img_name, 'label' : self.label }
+        label = os.path.basename(img_name).split('.')[0] == 'cat' if 0 else  1
+        return img, label
 
 
 
