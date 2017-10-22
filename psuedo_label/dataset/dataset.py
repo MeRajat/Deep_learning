@@ -25,7 +25,6 @@ class data_loader(Dataset):
         img = cv2.imread(img_name)
         img = cv2.resize(img, dsize = (200,200))
         img = np.einsum('ijk->kij', img)
-        img = np.expand_dims(img, axis =0)
         img = torch.from_numpy(img)
 #         img = torch.FloatTensor(img)
         # d = {'image'  : img, 'name' : img_name, 'label' : self.label }
