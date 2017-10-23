@@ -26,11 +26,12 @@ class data_loader(Dataset):
         img = cv2.resize(img, dsize = (200,200))
         img = np.einsum('ijk->kij', img)
         img = torch.from_numpy(img)
-        if self.test:
-            print(img_name)
 #         img = torch.FloatTensor(img)
         # d = {'image'  : img, 'name' : img_name, 'label' : self.label }
         label = os.path.basename(img_name).split('.')[0] == 'cat' if 0 else  1
+        if self.test:
+            print(img_name)
+            print(label)
         return img, label
 
 
