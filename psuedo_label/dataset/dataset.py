@@ -29,9 +29,9 @@ class data_loader(Dataset):
 #         img = torch.FloatTensor(img)
         # d = {'image'  : img, 'name' : img_name, 'label' : self.label }
         label = os.path.basename(img_name).split('.')[0] == 'cat' if 0 else  1
-        if self.test:
-            print(img_name)
-            print(label)
+        print("******" * 5)
+        print(img_name)
+        print(label)
         return img, label
 
 
