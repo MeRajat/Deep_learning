@@ -28,8 +28,12 @@ class data_loader(Dataset):
         img = torch.from_numpy(img)
 #         img = torch.FloatTensor(img)
         # d = {'image'  : img, 'name' : img_name, 'label' : self.label }
-        label = os.path.basename(img_name).split('.')[0] == 'cat' if 0 else  1
-        print("******" * 5)
+        print("%%"*10)
+        label = os.path.basename(img_name).split('.')[0]
+        if label == 'cat':
+            label = 0
+        elif label == 'dog':
+            label = 1
         print(img_name)
         print(label)
         return img, label
