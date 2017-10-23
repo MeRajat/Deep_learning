@@ -16,7 +16,7 @@ class data_loader(Dataset):
         self.files = glob.glob(os.path.join(path ,"*.jpg"))
         self.transform = transform
         # self.label = torch.cuda.LongTensor(label)
-        
+        self.test = test
     def __len__(self):
         return len(self.files)
     
@@ -26,7 +26,7 @@ class data_loader(Dataset):
         img = cv2.resize(img, dsize = (200,200))
         img = np.einsum('ijk->kij', img)
         img = torch.from_numpy(img)
-        if test:
+        if self.test:
             print(img_name)
 #         img = torch.FloatTensor(img)
         # d = {'image'  : img, 'name' : img_name, 'label' : self.label }
